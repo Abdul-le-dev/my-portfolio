@@ -109,7 +109,7 @@ const ContactForm = () => {
         headers: { Accept: "application/json" },
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (response.ok) {
         setStatus("success");
@@ -123,7 +123,10 @@ const ContactForm = () => {
         setErrors({});
       } else {
         setStatus("error");
-        console.error("Erreur serveur :", result.message);
+        console.error(
+          "Erreur serveur :",
+          result.error || result.errors || "Erreur inconnue",
+        );
       }
     } catch (error) {
       setStatus("error");
