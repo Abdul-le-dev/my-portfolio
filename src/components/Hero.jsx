@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-8 md:py-32 flex flex-col items-center text-center">
+    <section className="max-w-6xl mx-auto px-6 py-8 md:py-24 flex flex-col items-center text-center">
       {/* Badge plus petit sur mobile */}
       <div className="inline-block px-3 py-1 mb-6 text-xs md:text-sm font-medium text-blue-400 bg-blue-400/10 rounded-full border border-blue-400/20">
         Disponible pour de nouvelles opportunités

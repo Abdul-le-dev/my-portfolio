@@ -1,43 +1,82 @@
 import React from "react";
+import {
+  FaGithub,
+  FaJs,
+  FaReact,
+  FaCss3Alt,
+  FaHtml5,
+  FaSass,
+  FaBootstrap,
+  FaPhp,
+  FaWordpress,
+  FaNodeJs,
+  FaDatabase,
+} from "react-icons/fa";
+import {
+  SiMongodb,
+  SiPostman,
+  SiExpress,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiFigma,
+  SiMysql,
+  SiGit,
+  SiPhpmyadmin,
+  SiLocal,
+} from "react-icons/si";
+import { TbSeo } from "react-icons/tb";
+import { DiPhotoshop } from "react-icons/di";
 
 const Skills = () => {
   const categories = [
     {
       title: "💻 Frontend",
       items: [
-        "React",
-        "React Native",
-        "Next.js",
-        "JavaScript",
-        "Html & Css",
-        "Sass",
-        "Tailwind Css",
-        "Bootstrap",
+        { name: "React", icon: <FaReact className="text-blue-400" /> },
+        { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+        {
+          name: "Html & Css",
+          icon: <FaHtml5 className="text-orange-500" />,
+          icon2: <FaCss3Alt className="text-blue-500" />,
+        },
+        { name: "Sass", icon: <FaSass className="text-pink-500" /> },
+        {
+          name: "Tailwind Css",
+          icon: <SiTailwindcss className="text-cyan-400" />,
+        },
+        {
+          name: "Bootstrap",
+          icon: <FaBootstrap className="text-purple-500" />,
+        },
+        { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
       ],
     },
     {
       title: "⚙️ Backend & Dev",
       items: [
-        "Node.js",
-        "Express.js",
-        "PHP",
-        "MySQL",
-        "SQL",
-        "MongoDB",
-        "Git & GitHub",
-        "Postman",
-        "Vite",
+        { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
+        { name: "Express.js", icon: <SiExpress className="text-white" /> },
+        { name: "PHP", icon: <FaPhp className="text-blue-500" /> },
+        { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+        { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
+        {
+          name: "Git & GitHub",
+          icon: <FaGithub className="text-gray-400" />,
+        },
+        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
       ],
     },
     {
       title: "🎨 Design & Outils",
       items: [
-        "Figma",
-        "Photoshop",
-        "phpMyAdmin",
-        "SEO & Accessibilité",
-        "WordPress",
-        "Local",
+        { name: "Figma", icon: <SiFigma className="text-purple-400" /> },
+        { name: "Photoshop", icon: <DiPhotoshop className="text-blue-400" /> },
+        { name: "SEO", icon: <TbSeo className="text-yellow-500" /> },
+        { name: "WordPress", icon: <FaWordpress className="text-gray-300" /> },
+        {
+          name: "phpMyAdmin",
+          icon: <SiPhpmyadmin className="text-blue-500" />,
+        },
       ],
     },
   ];
@@ -45,12 +84,13 @@ const Skills = () => {
   return (
     <section id="competences" className="py-24 bg-gray-950">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center">
-        <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">Mon Stack Technique</span>
-        <h2 className="text-3xl font-bold text-white mt-6 mb-6 text-center">
-          Mes Compétences
-        </h2>
-        <p className="text-gray-400 mb-12 text-center">Des outils modernes pour des solutions performantes et scalables.</p>
+        <div className="text-center mb-12">
+          <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">
+            Mon Stack Technique
+          </span>
+          <h2 className="text-3xl font-bold text-white mt-6 mb-6">
+            Mes Compétences
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -59,17 +99,20 @@ const Skills = () => {
               key={cat.title}
               className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800"
             >
-              <h3 className="text-blue-500 font-semibold mb-4 uppercase tracking-wider text-sm">
+              <h3 className="text-blue-500 font-semibold mb-6 uppercase tracking-wider text-sm">
                 {cat.title}
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-col gap-3">
                 {cat.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 bg-gray-950 border border-gray-800 rounded-lg text-gray-400 text-sm hover:border-blue-500/50 hover:text-white transition-all"
+                  <div
+                    key={skill.name}
+                    className="flex items-center gap-3 px-4 py-2 bg-gray-950 border border-gray-800 rounded-lg text-gray-400 hover:border-blue-500/50 hover:text-white transition-all"
                   >
-                    {skill}
-                  </span>
+                    <span className="text-xl flex column">
+                      {skill.icon} {skill.icon2}
+                    </span>
+                    <span className="text-sm">{skill.name}</span>
+                  </div>
                 ))}
               </div>
             </div>

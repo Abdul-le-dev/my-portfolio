@@ -71,7 +71,7 @@ const Projects = () => {
         "https://res.cloudinary.com/doqbpkxy7/image/upload/q_auto,f_auto/v1742924581/Capture_d_e%CC%81cran_2025-03-25_a%CC%80_18.41.23_myecw7.png",
       description:
         "Application de location immobilière développée avec React et React Router.",
-      logos: [FaReact, SiReactrouter, FaSass, FaGithub],
+      logos: [FaReact, SiReactrouter, FaSass],
       demoLink: "https://kasa-abdulledev.netlify.app",
       codeLink: "https://github.com/Abdul-le-dev/Kasa",
       category: "Frontend",
@@ -108,7 +108,7 @@ const Projects = () => {
         "https://res.cloudinary.com/doqbpkxy7/image/upload/q_auto,f_auto/v1742924580/Capture_d_e%CC%81cran_2025-03-25_a%CC%80_18.38.23_elmjzw.png",
       description:
         "Site mobile-first répertoriant les menus de restaurants gastronomiques avec animations CSS.",
-      logos: [FaHtml5, FaSass, FaGithub],
+      logos: [FaHtml5, FaSass],
       demoLink: "https://abdul-le-dev.github.io/ohmyfood",
       codeLink: "https://github.com/Abdul-le-dev/ohmyfood",
       category: "Frontend",
@@ -134,7 +134,7 @@ const Projects = () => {
         "https://res.cloudinary.com/doqbpkxy7/image/upload/q_auto,f_auto/v1742924580/Capture_d_e%CC%81cran_2025-03-25_a%CC%80_18.38.59_rrf8wc.png",
       description:
         "Amélioration du référencement (SEO) et accessibilité d'un site web existant",
-      logos: [TbSeo, FaBootstrap, FaGithub],
+      logos: [TbSeo, FaBootstrap],
       demoLink: "https://abdul-le-dev.github.io/LaPanthere",
       codeLink: "https://github.com/Abdul-le-dev/LaPanthere",
       category: "SEO",
@@ -147,7 +147,7 @@ const Projects = () => {
         "https://res.cloudinary.com/doqbpkxy7/image/upload/q_auto,f_auto/v1783019382/Capture_d_e%CC%81cran_2026-07-02_a%CC%80_20.58.45_le2udt.png",
       description:
         "Application web de e-commerce de plantes, entièrement réarchitecturée et modernisée.",
-      logos: [FaReact, FaCss3Alt, FaGithub],
+      logos: [FaReact, FaCss3Alt],
       demoLink: "https://la-maison-jungle-abdul.netlify.app",
       codeLink: "https://github.com/Abdul-le-dev/La-maison-jungle",
       category: "Frontend",
@@ -155,7 +155,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projets" className="max-w-6xl mx-auto px-6 py-24">
+    <section id="projets" className="max-w-6xl mx-auto py-24">
       <div className="text-center">
         <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">
           Portfolio

@@ -8,7 +8,7 @@ const About = () => {
         <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">
           Ce que je suis
         </span>
-        <h2 className="text-3xl font-bold text-white mt-4 mb-6">
+        <h2 className="text-3xl font-bold text-white mt-6 mb-6">
           À propos de moi
         </h2>
         <p className="text-gray-400 mb-12 max-w-2xl mx-auto">

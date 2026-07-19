@@ -185,7 +185,7 @@ const ContactForm = () => {
         {/* Bouton Calendly */}
         <button
           onClick={openCalendly}
-          className="inline-flex items-center gap-2 bg-white text-gray-950 px-6 py-3 rounded-xl font-bold hover:bg-blue-100 transition shadow-lg mb-8"
+          className="inline-flex items-center gap-2 bg-white text-gray-950 px-6 py-3 rounded-xl font-bold hover:bg-blue-100 transition shadow-lg mb-8 cursor-pointer"
         >
           <Calendar size={20} /> Réserver un RDV gratuit
         </button>
