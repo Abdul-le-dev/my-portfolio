@@ -35,7 +35,7 @@ const About = () => {
             {/* Stats : centré sur mobile, aligné à gauche sur desktop */}
             <div className="flex justify-center md:justify-start gap-6 md:gap-8 pt-4">
               <div className="text-center md:text-left">
-                <h4 className="font-bold text-blue-500 text-xl">10+</h4>
+                <h3 className="font-bold text-blue-500 text-xl">10+</h3>
                 <p className="text-xs md:text-sm text-white">Projets</p>
               </div>
               <div className="text-center md:text-left">

@@ -40,8 +40,8 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-white/10">
         <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="w-50">
-            <a href="/">
-              <img src={logo} alt="Logo" />
+            <a href="/" aria-label="Retour à l'accueil">
+              <img src={logo} alt="Logo de Abdul le dev" />
             </a>
           </div>
 
@@ -66,6 +66,7 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-5 text-gray-400">
             <a
               href="https://github.com/Abdul-le-dev"
+              aria-label="Mon profil GitHub"
               target="_blank"
               className="hover:text-white transition hover:scale-110"
             >
@@ -73,6 +74,7 @@ const Header = () => {
             </a>
             <a
               href="#"
+              aria-label="Mon profil LinkedIn"
               target="_blank"
               className="hover:text-white transition hover:scale-110"
             >
@@ -80,6 +82,7 @@ const Header = () => {
             </a>
             <a
               href="mailto:abdulledev@gmail.com"
+              aria-label="Envoyer un email"
               className="hover:text-white transition hover:scale-110"
             >
               <SiGmail size={22} />
@@ -90,6 +93,7 @@ const Header = () => {
           <button
             className="md:hidden text-white z-50 p-2"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             {isOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
           </button>
@@ -117,14 +121,23 @@ const Header = () => {
         <div className="flex gap-8 mt-4 text-gray-400">
           <a
             href="https://github.com/Abdul-le-dev"
+            aria-label="Mon profil GitHub"
             className="hover:text-white"
           >
             <FaGithub size={30} />
           </a>
-          <a href="#" className="hover:text-white">
+          <a
+            href="#"
+            aria-label="Mon profil LinkedIn"
+            className="hover:text-white"
+          >
             <FaLinkedin size={30} />
           </a>
-          <a href="mailto:abdulledev@gmail.com" className="hover:text-white">
+          <a
+            href="mailto:abdulledev@gmail.com"
+            aria-label="Envoyer un email"
+            className="hover:text-white"
+          >
             <SiGmail size={30} />
           </a>
         </div>

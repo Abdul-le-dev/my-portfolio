@@ -91,6 +91,10 @@ const Skills = () => {
           <h2 className="text-3xl font-bold text-white mt-6 mb-6">
             Mes Compétences
           </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Voici une liste des technologies et outils que j'utilise pour
+            concevoir des sites web et des applications.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">

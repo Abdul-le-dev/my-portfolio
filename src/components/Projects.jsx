@@ -188,6 +188,7 @@ const Projects = () => {
                 {project.demoLink && (
                   <a
                     href={project.demoLink}
+                    aria-label="Lien vers la demo"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition shadow-lg"
@@ -198,6 +199,7 @@ const Projects = () => {
                 {project.codeLink && (
                   <a
                     href={project.codeLink}
+                    aria-label="Lien vers le code"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-700 transition border border-gray-600 shadow-lg"

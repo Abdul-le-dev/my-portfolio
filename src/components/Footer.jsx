@@ -30,10 +30,10 @@ const Footer = () => {
 
           {/* Logo : centré */}
           <div className="flex justify-center">
-            <a href="/">
+            <a href="/" aria-label="Retour à l'accueil">
               <img
                 src={logo}
-                alt="Logo"
+                alt="Logo de Abdul le dev"
                 className="w-40 md:w-50 h-auto object-contain"
               />
             </a>
@@ -43,6 +43,7 @@ const Footer = () => {
           <div className="flex flex-row justify-center md:justify-end gap-6">
             <a
               href="https://github.com/Abdul-le-dev"
+              aria-label="Mon profil GitHub"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition"
@@ -51,6 +52,7 @@ const Footer = () => {
             </a>
             <a
               href="#"
+              aria-label="Mon profil LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition"
@@ -59,6 +61,7 @@ const Footer = () => {
             </a>
             <a
               href="mailto:abdulledev@gmail.com"
+              aria-label="Mon adresse email"
               className="text-gray-400 hover:text-white transition"
             >
               <SiGmail size={24} />
