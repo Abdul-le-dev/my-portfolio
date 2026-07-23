@@ -3,7 +3,7 @@ import { User, Code, Target } from "lucide-react";
 
 const About = () => {
   return (
-    <section id="a-propos" className="py-16 md:py-24 bg-gray-950">
+    <section id="a-propos" className="py-24 md:py-24 bg-gray-950">
       <div className="text-center px-6">
         <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">
           Ce que je suis
