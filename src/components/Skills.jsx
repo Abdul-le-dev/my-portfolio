@@ -98,7 +98,7 @@ const Skills = () => {
           {categories.map((cat) => (
             <div
               key={cat.title}
-              className="bg-gray-900/50 p-6 rounded-2xl border border-gray-800"
+              className="bg-gray-900 p-6 rounded-2xl border border-gray-800"
             >
               <h3 className="text-blue-500 font-semibold mb-6 uppercase tracking-wider text-sm">
                 {cat.title}

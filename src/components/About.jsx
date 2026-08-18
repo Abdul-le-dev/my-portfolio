@@ -47,7 +47,7 @@ const About = () => {
           </div>
 
           <div className="grid gap-4 w-full">
-            <div className="p-5 md:p-6 bg-gray-900/50 border border-gray-800 rounded-xl flex items-start gap-4 hover:border-blue-500/30 transition">
+            <div className="p-5 md:p-6 bg-gray-900 border border-gray-800 rounded-xl flex items-start gap-4 hover:border-blue-500/30 transition">
               <User className="text-blue-500 mt-1 shrink-0" />
               <div>
                 <h3 className="font-semibold text-white">Expérience</h3>
