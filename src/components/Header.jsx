@@ -17,7 +17,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY < 200) {
+      if (window.scrollY < 300) {
         setActiveSection("");
         return;
       }
