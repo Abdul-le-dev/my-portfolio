@@ -1,28 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
   <defs>
-    <!-- Dégradé de fond subtil -->
+
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0f172a" />
       <stop offset="100%" stop-color="#030712" />
     </linearGradient>
 
-    <!-- Dégradé lumineux pour le lettrage -->
     <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ffffff" />
       <stop offset="100%" stop-color="#60a5fa" />
     </linearGradient>
   </defs>
 
-  <!-- Fond arrondi avec bordure brillante -->
   <rect width="128" height="128" rx="30" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="4" />
 
-  <!-- Ligne accentuée tech en haut -->
   <rect x="40" y="24" width="48" height="4" rx="2" fill="#3b82f6" />
 
-  <!-- Initiales ALD massives et modernes (Point retiré) -->
   <text 
     x="50%" 
-    y="65%" 
+    y="60%" 
     dominant-baseline="middle" 
     text-anchor="middle" 
     fill="url(#textGrad)" 
@@ -33,7 +29,5 @@
   >
     ALD
   </text>
-
-  <!-- Point minimaliste "status active" en bas (conservé) -->
 
 </svg>
