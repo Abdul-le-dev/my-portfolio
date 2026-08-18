@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -22,7 +23,10 @@ import {
 } from "react-icons/si";
 import { TbSeo } from "react-icons/tb";
 import { DiPhotoshop } from "react-icons/di";
+
 const Projects = () => {
+  const [activeCategory, setActiveCategory] = useState("Tous");
+
   const projects = [
     {
       id: 1,
@@ -154,8 +158,15 @@ const Projects = () => {
     },
   ];
 
+  const categories = ["Tous", "Frontend", "Backend", "CMS", "SEO"];
+
+  const filteredProjects =
+    activeCategory === "Tous"
+      ? projects
+      : projects.filter((project) => project.category === activeCategory);
+
   return (
-    <section id="projets" className="max-w-6xl mx-auto py-24">
+    <section id="projets" className="max-w-6xl mx-auto px-6 py-24">
       <div className="text-center">
         <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">
           Portfolio
@@ -163,27 +174,43 @@ const Projects = () => {
         <h2 className="text-3xl font-bold text-white mt-6 mb-6 text-center">
           Mes Réalisations
         </h2>
-        <p className="text-gray-400 mb-12 text-center">
+        <p className="text-gray-400 mb-8 text-center">
           Une sélection de projets mêlant intégration pixel-perfect et logique
           complexe.
         </p>
       </div>
 
+      <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setActiveCategory(category)}
+            aria-label={`Filtrer par ${category}`}
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
+              activeCategory === category
+                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/30"
+                : "bg-gray-900 text-gray-400 border border-gray-800 hover:text-white hover:border-gray-700"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
+        {filteredProjects.map((project) => (
           <div
             key={project.id}
             className="bg-gray-900 border border-gray-800 p-6 rounded-2xl hover:border-blue-400 transition group flex flex-col"
           >
-            {/* Conteneur de l'image */}
+
             <div className="relative overflow-hidden rounded-lg mb-4">
               <img
                 src={project.image}
                 alt={project.altMsg}
-                className="h-45 w-full object-fill "
+                className="h-45 w-full object-fill"
               />
 
-              {/* Overlay qui apparaît au survol */}
               <div className="absolute inset-0 bg-gray-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                 {project.demoLink && (
                   <a
@@ -215,7 +242,7 @@ const Projects = () => {
             </h3>
             <p className="text-gray-400 text-sm mb-4">{project.description}</p>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mt-auto">
               {project.logos.map((Icon, index) => (
                 <span
                   key={index}

@@ -5,7 +5,7 @@ import logo from "../assets/ald-white.webp";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("#a-propos"); // Par défaut
+  const [activeSection, setActiveSection] = useState("");
 
   const navLinks = [
     { name: "À propos", href: "#a-propos" },
@@ -17,12 +17,15 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // On parcourt les sections
+      if (window.scrollY < 200) {
+        setActiveSection("");
+        return;
+      }
+
       for (const link of navLinks) {
         const element = document.querySelector(link.href);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Si le haut de la section est proche du haut de l'écran (avec marge de 150px)
           if (rect.top <= 150 && rect.bottom >= 150) {
             setActiveSection(link.href);
             break;
@@ -30,14 +33,14 @@ const Header = () => {
         }
       }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {/* HEADER FIXE */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-white/10 pt-2 pb-2">
         <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="w-50">
             <a href="/" aria-label="Retour à l'accueil">
@@ -45,8 +48,7 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Navigation Desktop */}
-          <ul className="hidden md:flex gap-8 font-medium text-gray-400">
+          <ul className="hidden lg:flex gap-8 font-medium text-gray-400">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
@@ -62,12 +64,12 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* Liens Sociaux DESKTOP */}
-          <div className="hidden md:flex items-center gap-5 text-gray-400">
+          <div className="hidden lg:flex items-center gap-5 text-gray-400">
             <a
               href="https://github.com/Abdul-le-dev"
               aria-label="Mon profil GitHub"
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-white transition hover:scale-110"
             >
               <FaGithub size={22} />
@@ -76,6 +78,7 @@ const Header = () => {
               href="#"
               aria-label="Mon profil LinkedIn"
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-white transition hover:scale-110"
             >
               <FaLinkedin size={22} />
@@ -89,9 +92,8 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Bouton Burger */}
           <button
-            className="md:hidden text-white z-50 p-2"
+            className="lg:hidden text-white z-50 p-2"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
@@ -100,9 +102,8 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* MENU MOBILE */}
       <div
-        className={`fixed inset-0 z-40 bg-gray-950 flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 bg-gray-950 flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -117,11 +118,12 @@ const Header = () => {
           </a>
         ))}
 
-        {/* Liens Sociaux MOBILE */}
         <div className="flex gap-8 mt-4 text-gray-400">
           <a
             href="https://github.com/Abdul-le-dev"
             aria-label="Mon profil GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hover:text-white"
           >
             <FaGithub size={30} />
@@ -129,6 +131,8 @@ const Header = () => {
           <a
             href="#"
             aria-label="Mon profil LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hover:text-white"
           >
             <FaLinkedin size={30} />

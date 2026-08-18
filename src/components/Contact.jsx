@@ -182,7 +182,6 @@ const ContactForm = () => {
           Me Contacter
         </h2>
 
-        {/* Bouton Calendly */}
         <button
           onClick={openCalendly}
           className="inline-flex items-center gap-2 bg-white text-gray-950 px-6 py-3 rounded-xl font-bold hover:bg-blue-100 transition shadow-lg mb-8 cursor-pointer"
@@ -194,7 +193,6 @@ const ContactForm = () => {
         </p>
       </div>
 
-      {/* Formulaire de contact */}
       {status === "success" ? (
         <div className="text-center p-8 bg-gray-900 rounded-2xl border border-green-500/30 text-white">
           <FaCheckCircle className="text-green-500 text-4xl mx-auto mb-4" />

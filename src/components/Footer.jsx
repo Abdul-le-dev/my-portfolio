@@ -7,9 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-950 border-t border-white/20 py-12">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Changement de grid-cols-3 à flex-col sur mobile */}
         <div className="flex flex-col items-center gap-8 mb-10 md:grid md:grid-cols-3 md:items-center">
-          {/* Liens de navigation : centré sur mobile, aligné à gauche sur desktop */}
           <nav className="flex flex-col items-center md:items-start gap-2 text-sm text-gray-400">
             <a href="#a-propos" className="hover:text-blue-400 transition">
               À propos
@@ -28,7 +26,6 @@ const Footer = () => {
             </a>
           </nav>
 
-          {/* Logo : centré */}
           <div className="flex justify-center">
             <a href="/" aria-label="Retour à l'accueil">
               <img
@@ -39,7 +36,6 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Icônes : centré sur mobile, aligné à droite sur desktop */}
           <div className="flex flex-row justify-center md:justify-end gap-6">
             <a
               href="https://github.com/Abdul-le-dev"

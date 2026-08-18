@@ -17,9 +17,7 @@ const About = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-6">
-        {/* Ajout de flex-col et d'un gap plus large pour mobile */}
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
-          {/* Texte de présentation */}
           <div className="space-y-6 text-gray-400 text-center flex flex-col items-center">
             <p className="leading-relaxed max-w-lg">
               Développeur passionné par la création d'expériences web modernes,
@@ -32,7 +30,6 @@ const About = () => {
               technologies et collaborer au sein d'équipes dynamiques.
             </p>
 
-            {/* Stats : centré sur mobile, aligné à gauche sur desktop */}
             <div className="flex justify-center md:justify-start gap-6 md:gap-8 pt-4">
               <div className="text-center md:text-left">
                 <h3 className="font-bold text-blue-500 text-xl">10+</h3>
@@ -49,7 +46,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* Cartes de valeurs */}
           <div className="grid gap-4 w-full">
             <div className="p-5 md:p-6 bg-gray-900/50 border border-gray-800 rounded-xl flex items-start gap-4 hover:border-blue-500/30 transition">
               <User className="text-blue-500 mt-1 shrink-0" />

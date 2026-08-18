@@ -10,7 +10,6 @@ import {
   FaPhp,
   FaWordpress,
   FaNodeJs,
-  FaDatabase,
 } from "react-icons/fa";
 import {
   SiMongodb,
@@ -20,9 +19,7 @@ import {
   SiNextdotjs,
   SiFigma,
   SiMysql,
-  SiGit,
   SiPhpmyadmin,
-  SiLocal,
 } from "react-icons/si";
 import { TbSeo } from "react-icons/tb";
 import { DiPhotoshop } from "react-icons/di";
@@ -36,8 +33,12 @@ const Skills = () => {
         { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
         {
           name: "Html & Css",
-          icon: <FaHtml5 className="text-orange-500" />,
-          icon2: <FaCss3Alt className="text-blue-500" />,
+          icon: (
+            <div className="flex items-center gap-1">
+              <FaHtml5 className="text-orange-500" />
+              <FaCss3Alt className="text-blue-500" />
+            </div>
+          ),
         },
         { name: "Sass", icon: <FaSass className="text-pink-500" /> },
         {
@@ -59,10 +60,7 @@ const Skills = () => {
         { name: "PHP", icon: <FaPhp className="text-blue-500" /> },
         { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
         { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-        {
-          name: "Git & GitHub",
-          icon: <FaGithub className="text-gray-400" />,
-        },
+        { name: "Git & GitHub", icon: <FaGithub className="text-gray-400" /> },
         { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
       ],
     },
@@ -111,8 +109,8 @@ const Skills = () => {
                     key={skill.name}
                     className="flex items-center gap-3 px-4 py-2 bg-gray-950 border border-gray-800 rounded-lg text-gray-400 hover:border-blue-500/50 hover:text-white transition-all"
                   >
-                    <span className="text-xl flex column">
-                      {skill.icon} {skill.icon2}
+                    <span className="text-xl flex items-center">
+                      {skill.icon}
                     </span>
                     <span className="text-sm">{skill.name}</span>
                   </div>
