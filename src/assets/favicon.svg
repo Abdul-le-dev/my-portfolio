@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <!-- Dégradé bleu professionnel -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fond sombre du site (gray-950) avec coins arrondis -->
+  <rect width="128" height="128" rx="32" fill="#030712" />
+  
+  <!-- Bordure subtile élégante avec le dégradé -->
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="none" stroke="url(#blueGrad)" stroke-width="4" opacity="0.6" />
+  
+  <!-- Monogramme ALD stylisé -->
+  <text 
+    x="50%" 
+    y="52%" 
+    dominant-baseline="middle" 
+    text-anchor="middle" 
+    fill="#ffffff" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-weight="900" 
+    font-size="44"
+    letter-spacing="-1.5"
+  >
+    A<tspan fill="url(#blueGrad)">L</tspan>D
+  </text>
+
+  <!-- Point lumineux "dev" en bas -->
+  <circle cx="64" cy="98" r="4" fill="#3b82f6" />
+</svg>
