@@ -3,7 +3,7 @@ import { User, Code, Target } from "lucide-react";
 
 const About = () => {
   return (
-    <section id="a-propos" className="py-24 md:py-24 bg-gray-950">
+    <section id="a-propos" className="py-24 md:py-24">
       <div className="text-center px-6">
         <span className="text-sm font-medium text-blue-400 uppercase tracking-wider">
           Ce que je suis
@@ -56,7 +56,7 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div className="p-5 md:p-6 bg-gray-900/50 border border-gray-800 rounded-xl flex items-start gap-4 hover:border-blue-500/30 transition">
+            <div className="p-5 md:p-6 bg-gray-900 border border-gray-800 rounded-xl flex items-start gap-4 hover:border-blue-500/30 transition">
               <Code className="text-blue-500 mt-1 shrink-0" />
               <div>
                 <h3 className="font-semibold text-white">Technique</h3>
@@ -65,7 +65,7 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div className="p-5 md:p-6 bg-gray-900/50 border border-gray-800 rounded-xl flex items-start gap-4 hover:border-blue-500/30 transition">
+            <div className="p-5 md:p-6 bg-gray-900 border border-gray-800 rounded-xl flex items-start gap-4 hover:border-blue-500/30 transition">
               <Target className="text-blue-500 mt-1 shrink-0" />
               <div>
                 <h3 className="font-semibold text-white">Objectifs</h3>

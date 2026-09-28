@@ -227,7 +227,7 @@ const ContactForm = () => {
               type="text"
               name="name"
               required
-              className={`w-full bg-gray-950 border rounded-lg p-3 text-white outline-none transition focus:border-blue-500 ${errors.name ? "border-red-500" : "border-gray-800"}`}
+              className={`w-full bg-gray-950/80 border rounded-lg p-3 text-white outline-none transition focus:border-blue-500 ${errors.name ? "border-red-500" : "border-gray-800"}`}
               placeholder="Votre nom et prénom"
               autoComplete="name"
               value={formData.name}
@@ -254,7 +254,7 @@ const ContactForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               required
-              className={`w-full bg-gray-950 border rounded-lg p-3 text-white outline-none transition focus:border-blue-500 ${errors.email ? "border-red-500" : "border-gray-800"}`}
+              className={`w-full bg-gray-950/80 border rounded-lg p-3 text-white outline-none transition focus:border-blue-500 ${errors.email ? "border-red-500" : "border-gray-800"}`}
               placeholder="Votre adresse email"
             />
             {errors.email && (
@@ -277,7 +277,7 @@ const ContactForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               required
-              className={`w-full bg-gray-950 border rounded-lg p-3 text-white outline-none transition focus:border-blue-500 ${errors.subject ? "border-red-500" : "border-gray-800"}`}
+              className={`w-full bg-gray-950/80 border rounded-lg p-3 text-white outline-none transition focus:border-blue-500 ${errors.subject ? "border-red-500" : "border-gray-800"}`}
               placeholder="Sujet"
             />
             {errors.subject && (
@@ -300,7 +300,7 @@ const ContactForm = () => {
               value={formData.message}
               onChange={handleChange}
               onBlur={handleBlur}
-              className={`w-full bg-gray-950 border rounded-lg p-3 text-white outline-none transition focus:border-blue-500 ${errors.message ? "border-red-500" : "border-gray-800"}`}
+              className={`w-full bg-gray-950/80 border rounded-lg p-3 text-white outline-none transition focus:border-blue-500 ${errors.message ? "border-red-500" : "border-gray-800"}`}
               placeholder="Votre message..."
               minLength={10}
             ></textarea>

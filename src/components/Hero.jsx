@@ -24,7 +24,7 @@ const Hero = () => {
           vos défis techniques.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-16">
+        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xs sm:max-w-none sm:w-auto mb-16">
           <a
             href="#projets"
             aria-label="Voir mes projets de développement"
@@ -35,7 +35,7 @@ const Hero = () => {
           <a
             href="#contact"
             aria-label="Me contacter pour une collaboration"
-            className="border border-gray-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition text-center"
+            className="border border-gray-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-700 transition text-center"
           >
             Me contacter
           </a>

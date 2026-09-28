@@ -1,28 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaBars,
+  FaTimes,
+  FaHome,
+  FaUser,
+  FaCode,
+  FaBriefcase,
+  FaFolderOpen,
+  FaEnvelope,
+} from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import logo from "../assets/ald-white.webp";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isDocked, setIsDocked] = useState(false);
 
   const navLinks = [
-    { name: "À propos", href: "#a-propos" },
-    { name: "Compétences", href: "#competences" },
-    { name: "Services", href: "#services" },
-    { name: "Projets", href: "#projets" },
-    { name: "Contact", href: "#contact" },
+    { name: "", href: "#hero", icon: FaHome },
+    { name: "À propos", href: "#a-propos", icon: FaUser },
+    { name: "Compétences", href: "#competences", icon: FaCode },
+    { name: "Services", href: "#services", icon: FaBriefcase },
+    { name: "Projets", href: "#projets", icon: FaFolderOpen },
+    { name: "Contact", href: "#contact", icon: FaEnvelope },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
+      setIsDocked(window.scrollY > 300);
+
       if (window.scrollY < 300) {
         setActiveSection("");
         return;
       }
 
-      for (const link of navLinks) {
+      for (let i = 0; i < navLinks.length; i++) {
+        const link = navLinks[i];
         const element = document.querySelector(link.href);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -38,36 +54,27 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navWrapperClass = isDocked
+    ? "fixed left-1/2 -translate-x-1/2 z-40 hidden lg:block transition-all duration-500 ease-in-out bottom-6"
+    : "fixed left-1/2 -translate-x-1/2 z-40 hidden lg:block transition-all duration-500 ease-in-out mt-3.5";
+
+  const ulClass = isDocked
+    ? "flex items-center gap-2 font-medium text-gray-400 bg-gray-900/70 backdrop-blur-md border border-white/50 shadow-lg transition-all duration-500 rounded-full px-4 py-3"
+    : "flex items-center gap-8 font-medium text-gray-400 px-6 py-2 ml-15";
+
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-white/10 pt-2 pb-2">
+      <header className="fixed top-0 left-0 right-0 z-30 bg-gray-900/50 backdrop-blur-md border-b border-white/10 pt-2 pb-2">
         <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="w-50">
-            <a href="/" aria-label="Retour à l'accueil">
+            <a href="/" aria-label="Retour a l'accueil">
               <img src={logo} alt="Logo de Abdul le dev" />
             </a>
           </div>
 
-          <ul className="hidden lg:flex gap-8 font-medium text-gray-400">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className={`relative py-2 group transition-colors duration-300 ${activeSection === link.href ? "text-white" : "text-gray-400"}`}
-                >
-                  {link.name}
-                  <span
-                    className={`absolute left-0 bottom-0 h-0.5 bg-blue-500 transition-all duration-300 ${activeSection === link.href ? "w-full" : "w-0 group-hover:w-full"}`}
-                  ></span>
-                </a>
-              </li>
-            ))}
-          </ul>
-
           <div className="hidden lg:flex items-center gap-5 text-gray-400">
             <a
               href="https://github.com/Abdul-le-dev"
-              aria-label="Mon profil GitHub"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition hover:scale-110"
@@ -76,7 +83,6 @@ const Header = () => {
             </a>
             <a
               href="#"
-              aria-label="Mon profil LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition hover:scale-110"
@@ -85,7 +91,6 @@ const Header = () => {
             </a>
             <a
               href="mailto:abdulledev@gmail.com"
-              aria-label="Envoyer un email"
               className="hover:text-white transition hover:scale-110"
             >
               <SiGmail size={22} />
@@ -101,6 +106,61 @@ const Header = () => {
           </button>
         </nav>
       </header>
+
+      <div className={navWrapperClass}>
+        <ul className={ulClass}>
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            const isActive = activeSection === link.href;
+
+            let linkClass =
+              "relative flex items-center justify-center transition-all duration-300 ";
+            if (isDocked && isActive) {
+              linkClass += "p-3 rounded-full bg-blue-500 text-white scale-110";
+            } else if (isDocked && !isActive) {
+              linkClass +=
+                "p-3 rounded-full hover:text-white hover:bg-white/10";
+            } else if (!isDocked && isActive) {
+              linkClass += "py-2 group text-white";
+            } else {
+              linkClass += "py-2 group hover:text-white";
+            }
+
+            let textSpanClass =
+              "transition-opacity duration-300 whitespace-nowrap ";
+            textSpanClass += isDocked
+              ? "opacity-0 absolute pointer-events-none"
+              : "opacity-100";
+
+            let iconSpanClass = "transition-opacity duration-300 ";
+            iconSpanClass += isDocked
+              ? "opacity-100"
+              : "opacity-0 absolute pointer-events-none";
+
+            let underlineClass =
+              "absolute left-0 -bottom-1 h-0.5 bg-blue-500 transition-all duration-300 ";
+            underlineClass += isActive ? "w-full" : "w-0 group-hover:w-full";
+
+            return (
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  aria-label={link.name}
+                  className={linkClass}
+                >
+                  <span className={textSpanClass}>
+                    {link.name}
+                    <span className={underlineClass}></span>
+                  </span>
+                  <span className={iconSpanClass}>
+                    <Icon size={20} />
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
 
       <div
         className={`fixed inset-0 z-40 bg-gray-950 flex flex-col items-center justify-center gap-8 transition-all duration-300 lg:hidden ${
@@ -121,7 +181,6 @@ const Header = () => {
         <div className="flex gap-8 mt-4 text-gray-400">
           <a
             href="https://github.com/Abdul-le-dev"
-            aria-label="Mon profil GitHub"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white"
@@ -130,18 +189,13 @@ const Header = () => {
           </a>
           <a
             href="#"
-            aria-label="Mon profil LinkedIn"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white"
           >
             <FaLinkedin size={30} />
           </a>
-          <a
-            href="mailto:abdulledev@gmail.com"
-            aria-label="Envoyer un email"
-            className="hover:text-white"
-          >
+          <a href="mailto:abdulledev@gmail.com" className="hover:text-white">
             <SiGmail size={30} />
           </a>
         </div>
