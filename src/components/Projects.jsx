@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -26,6 +26,7 @@ import { DiPhotoshop } from "react-icons/di";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("Tous");
+  const [activeId, setActiveId] = useState(null);
 
   const projects = [
     {
@@ -165,6 +166,28 @@ const Projects = () => {
       ? projects
       : projects.filter((project) => project.category === activeCategory);
 
+  // Sélectionne le premier projet du filtre à chaque changement de catégorie
+  useEffect(() => {
+    setActiveId(filteredProjects.length > 0 ? filteredProjects[0].id : null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory]);
+
+  const activeProject =
+    filteredProjects.find((p) => p.id === activeId) || filteredProjects[0];
+
+  const handleKeyDown = (e, index) => {
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+    e.preventDefault();
+    const dir = e.key === "ArrowDown" ? 1 : -1;
+    const nextIndex =
+      (index + dir + filteredProjects.length) % filteredProjects.length;
+    const nextProject = filteredProjects[nextIndex];
+    setActiveId(nextProject.id);
+    document.getElementById("tab-" + nextProject.id)?.focus();
+  };
+
+  if (!activeProject) return null;
+
   return (
     <section id="projets" className="max-w-6xl mx-auto px-6 py-24">
       <div className="text-center">
@@ -180,80 +203,129 @@ const Projects = () => {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-3 mb-12">
+      <div className="flex flex-wrap justify-center gap-3 mb-16">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            aria-label={`Filtrer par ${category}`}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
-              activeCategory === category
+            aria-label={"Filtrer par " + category}
+            className={
+              "px-5 py-2 rounded-full text-sm font-medium transition-all cursor-pointer " +
+              (activeCategory === category
                 ? "bg-blue-500 text-white shadow-lg shadow-blue-500/30"
-                : "bg-gray-900 text-gray-400 border border-gray-800 hover:text-white hover:border-gray-700"
-            }`}
+                : "bg-gray-900 text-gray-400 border border-gray-800 hover:text-white hover:border-gray-700")
+            }
           >
             {category}
           </button>
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            className="bg-gray-900 border border-gray-800 p-6 rounded-2xl hover:border-blue-400 transition group flex flex-col"
-          >
-
-            <div className="relative overflow-hidden rounded-lg mb-4">
-              <img
-                src={project.image}
-                alt={project.altMsg}
-                className="h-45 w-full object-fill"
-              />
-
-              <div className="absolute inset-0 bg-gray-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                {project.demoLink && (
-                  <a
-                    href={project.demoLink}
-                    aria-label="Lien vers la demo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-600 transition shadow-lg"
-                  >
-                    <FaExternalLinkAlt size={14} />
-                  </a>
-                )}
-                {project.codeLink && (
-                  <a
-                    href={project.codeLink}
-                    aria-label="Lien vers le code"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-700 transition border border-gray-600 shadow-lg"
-                  >
-                    <FaGithub size={16} />
-                  </a>
-                )}
-              </div>
-            </div>
-
-            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition">
-              {project.title}
-            </h3>
-            <p className="text-gray-400 text-sm mb-4">{project.description}</p>
-
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.logos.map((Icon, index) => (
-                <span
-                  key={index}
-                  className="text-gray-300 bg-gray-950 p-1.5 rounded"
-                >
-                  <Icon size={20} />
+      <div className="lg:flex lg:gap-10 bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+        {/* Liste des onglets */}
+        <div
+          role="tablist"
+          aria-orientation="vertical"
+          aria-label="Liste des projets"
+          className="lg:w-1/3 flex lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-800 shrink-0"
+        >
+          {filteredProjects.map((project, index) => {
+            const isActive = project.id === activeProject.id;
+            return (
+              <button
+                key={project.id}
+                id={"tab-" + project.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={"panel-" + project.id}
+                tabIndex={isActive ? 0 : -1}
+                onClick={() => setActiveId(project.id)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                className={
+                  "relative shrink-0 text-left px-5 py-4 whitespace-nowrap lg:whitespace-normal transition-colors cursor-pointer border-b-2 lg:border-b-0 lg:border-l-2 " +
+                  (isActive
+                    ? "text-white border-blue-500 bg-gray-950/50"
+                    : "text-gray-500 border-transparent hover:text-gray-300 hover:bg-gray-950/30")
+                }
+              >
+                <span className="block text-sm font-semibold">
+                  {project.title}
                 </span>
-              ))}
-            </div>
+                <span className="block text-xs text-gray-500 mt-0.5">
+                  {project.category}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Panneau du projet actif */}
+        <div
+          id={"panel-" + activeProject.id}
+          role="tabpanel"
+          aria-labelledby={"tab-" + activeProject.id}
+          tabIndex={0}
+          className="lg:w-2/3 p-6 md:p-8"
+        >
+          <div className="rounded-xl overflow-hidden border border-gray-800 bg-gray-950 mb-6">
+            <img
+              key={activeProject.id}
+              src={activeProject.image}
+              alt={activeProject.altMsg}
+              className="w-full aspect-video object-fill"
+            />
           </div>
-        ))}
+
+          <span className="inline-block px-3 py-1 mb-4 text-xs font-medium text-blue-400 bg-blue-400/10 rounded-full border border-blue-400/20">
+            {activeProject.category}
+          </span>
+
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            {activeProject.title}
+          </h3>
+
+          <p className="text-gray-400 leading-relaxed mb-6">
+            {activeProject.description}
+          </p>
+
+          <div className="flex flex-wrap gap-2 mb-8">
+            {activeProject.logos.map((Icon, i) => (
+              <span
+                key={i}
+                className="text-gray-300 bg-gray-900 border border-gray-800 p-2 rounded-lg"
+              >
+                <Icon size={20} />
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {activeProject.demoLink && (
+              <a
+                href={activeProject.demoLink}
+                aria-label={"Voir la démo de " + activeProject.title}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-blue-500 text-white px-5 py-2.5 rounded-full font-medium hover:bg-blue-600 transition"
+              >
+                <FaExternalLinkAlt size={14} />
+                Voir la démo
+              </a>
+            )}
+            {activeProject.codeLink && (
+              <a
+                href={activeProject.codeLink}
+                aria-label={"Voir le code de " + activeProject.title}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 border border-gray-700 text-white px-5 py-2.5 rounded-full font-medium hover:bg-gray-800 transition"
+              >
+                <FaGithub size={16} />
+                Code source
+              </a>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

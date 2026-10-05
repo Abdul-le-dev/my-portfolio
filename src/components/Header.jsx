@@ -64,8 +64,8 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-30 bg-gray-900/50 backdrop-blur-md border-b border-white/10 pt-2 pb-2">
-        <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/50 backdrop-blur-md border-b border-white/10 pt-2 pb-2">
+        <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="w-50">
             <a href="/" aria-label="Retour a l'accueil">
               <img src={logo} alt="Logo de Abdul le dev" />
